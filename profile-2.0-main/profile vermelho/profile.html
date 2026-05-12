@@ -1,0 +1,1250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio Profissional feito pela Sofia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #C8102E;
+  --red-dark: #9B0C23;
+  --red-light: #E8192E;
+  --red-pale: #FFF0F2;
+  --red-muted: #F5D0D6;
+  --white: #FFFFFF;
+  --off-white: #FAFAF8;
+  --cream: #F5F2EE;
+  --charcoal: #1A1A1A;
+  --dark: #0F0F0F;
+  --mid: #5A5A5A;
+  --light: #9A9A9A;
+  --border: #E8E4DF;
+  --border-red: rgba(200,16,46,0.15);
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width:3px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--red); }
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top:0; left:0; right:0;
+  z-index:100;
+  background: rgba(250,250,248,0.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 4rem;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: slideDown 0.6s ease both;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--charcoal);
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+.logo span { color: var(--red); }
+
+.nav-links { display:flex; gap:2.5rem; list-style:none; }
+.nav-links a {
+  font-size:0.82rem;
+  font-weight:500;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color: var(--mid);
+  text-decoration:none;
+  transition: color 0.25s;
+  position: relative;
+}
+.nav-links a::after {
+  content:'';
+  position:absolute;
+  bottom:-4px; left:0; right:0;
+  height:2px;
+  background: var(--red);
+  transform:scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.nav-links a:hover { color: var(--red); }
+.nav-links a:hover::after { transform:scaleX(1); }
+
+/* ─── HERO ─── */
+#hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 68px;
+}
+
+.hero-left {
+  background: var(--charcoal);
+  padding: 7rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--red);
+}
+
+.hero-left::after {
+  content: '';
+  position: absolute;
+  bottom: -120px; right: -120px;
+  width: 350px; height: 350px;
+  border: 1px solid rgba(200,16,46,0.2);
+  border-radius: 50%;
+  animation: rotateSlow 20s linear infinite;
+}
+
+/* decorative second ring */
+.hero-left .ring2 {
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(200,16,46,0.1);
+  border-radius: 50%;
+  animation: rotateSlow 14s linear infinite reverse;
+  pointer-events: none;
+}
+
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.hero-eyebrow {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.4s forwards;
+}
+
+.hero-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--white);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.6s forwards;
+  letter-spacing: -1px;
+}
+
+.hero-name em {
+  color: var(--red);
+  font-style: italic;
+  display: block;
+}
+
+.hero-role {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.05em;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.8s forwards;
+  line-height: 1.7;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 1s forwards;
+  flex-wrap: wrap;
+}
+
+.btn-red {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  background: var(--red);
+  color: var(--white);
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-red:hover { background: var(--red-dark); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(200,16,46,0.35); }
+
+.btn-outline-white {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.9rem 2rem;
+  background: transparent;
+  color: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.2);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-block;
+}
+.btn-outline-white:hover { border-color: rgba(255,255,255,0.6); color: white; }
+
+.hero-right {
+  background: var(--white);
+  padding: 7rem 5rem 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3rem;
+  border-left: 1px solid var(--border);
+}
+
+.hero-stat {
+  border-left: 3px solid var(--red);
+  padding-left: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s forwards;
+}
+.hero-stat:nth-child(1) { animation-delay: 0.7s; }
+.hero-stat:nth-child(2) { animation-delay: 0.9s; }
+.hero-stat:nth-child(3) { animation-delay: 1.1s; }
+
+.hero-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--charcoal);
+  letter-spacing: -2px;
+}
+.hero-stat-num span { color: var(--red); }
+.hero-stat-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-top: 0.3rem;
+}
+
+.hero-quote {
+  background: var(--red-pale);
+  border-left: 4px solid var(--red);
+  padding: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.8s 1.2s forwards;
+}
+.hero-quote p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--red-dark);
+  line-height: 1.7;
+}
+
+/* ─── SECTION WRAPPER ─── */
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 6rem 4rem;
+}
+
+/* ─── SECTION HEADER ─── */
+.sec-header {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 4rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.sec-num {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  color: var(--red);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+.sec-line {
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+  margin-bottom: 0.6rem;
+}
+
+/* ─── SOBRE ─── */
+#sobre { background: var(--white); }
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-photo-wrap { position: relative; }
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.8rem;
+  position: relative;
+}
+.about-photo::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 4px;
+  background: var(--red);
+}
+.about-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.about-photo svg { opacity: 0.25; width: 64px; height: 64px; }
+
+.about-badge {
+  position: absolute;
+  bottom: -1.5rem; right: -1.5rem;
+  width: 90px; height: 90px;
+  background: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: pulse 3s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(200,16,46,0.4); }
+  50%      { box-shadow: 0 0 0 12px rgba(200,16,46,0); }
+}
+.about-badge-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: white;
+  line-height: 1;
+}
+.about-badge-label {
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.7);
+  margin-top: 2px;
+}
+
+.about-fields { display:flex; flex-direction:column; gap:2rem; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; }
+.field-group { display:flex; flex-direction:column; gap:0.4rem; }
+.field-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 500;
+}
+.field-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: var(--charcoal);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.5;
+}
+.field-value.multiline {
+  border: 1px solid var(--border);
+  padding: 0.8rem;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  border-radius: 2px;
+  white-space: pre-wrap;
+}
+
+/* ─── HABILIDADES ─── */
+#habilidades { background: var(--charcoal); }
+#habilidades .sec-title { color: var(--white); }
+#habilidades .sec-num { color: var(--red); }
+#habilidades .sec-line { background: rgba(255,255,255,0.1); }
+#habilidades .sec-header { border-color: rgba(255,255,255,0.1); }
+
+.skills-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255,255,255,0.05);
+}
+
+.skill-row {
+  background: var(--charcoal);
+  padding: 1.6rem 2rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  transition: background 0.2s;
+}
+.skill-row:hover { background: rgba(200,16,46,0.07); }
+
+.skill-row-left { display:flex; flex-direction:column; gap:0.8rem; }
+
+.skill-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--white);
+}
+
+.skill-bar-bg {
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  overflow: hidden;
+}
+.skill-bar-fill {
+  height: 100%;
+  background: var(--red);
+  width: 0;
+  transition: width 1.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.skill-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.15);
+  letter-spacing: -1px;
+  min-width: 60px;
+  text-align: right;
+}
+
+/* ─── TRAJETÓRIA ─── */
+#trajetoria { background: var(--off-white); }
+
+.timeline-wrap {
+  display: grid;
+  grid-template-columns: 1px 1fr;
+  gap: 0 3rem;
+}
+.timeline-spine {
+  background: var(--border);
+  position: relative;
+}
+.timeline-spine::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 80px;
+  background: var(--red);
+}
+
+.timeline-items { display:flex; flex-direction:column; gap:0; }
+
+.tl-item {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 2rem;
+  position: relative;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease, transform 0.6s ease, background 0.2s;
+}
+.tl-item.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.tl-item:last-child { border-bottom: none; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -3.5rem;
+  top: 2.8rem;
+  width: 12px; height: 12px;
+  background: var(--white);
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  transition: border-color 0.2s, background 0.2s;
+}
+.tl-item:first-child::before { border-color: var(--red); background: var(--red); }
+.tl-item:hover::before { border-color: var(--red); }
+
+.tl-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--red);
+  font-weight: 500;
+  margin-top: 0.15rem;
+}
+
+.tl-body { display:flex; flex-direction:column; gap:0.5rem; }
+.tl-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  letter-spacing: -0.3px;
+}
+.tl-sub {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+.tl-desc {
+  font-size: 0.92rem;
+  color: var(--mid);
+  line-height: 1.75;
+  margin-top: 0.4rem;
+}
+
+/* ─── HOBBIES ─── */
+#hobbies { background: var(--red); }
+#hobbies .sec-title { color: var(--white); }
+#hobbies .sec-num { color: rgba(255,255,255,0.6); }
+#hobbies .sec-line { background: rgba(255,255,255,0.2); }
+#hobbies .sec-header { border-color: rgba(255,255,255,0.2); }
+
+.hobbies-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 1px;
+  background: rgba(0,0,0,0.1);
+}
+
+.hobby-card {
+  background: var(--red);
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: background 0.25s, transform 0.3s;
+  opacity: 0;
+  transform: scale(0.85);
+}
+.hobby-card.in {
+  opacity: 1;
+  transform: scale(1);
+}
+.hobby-card:hover { background: var(--red-dark); transform: scale(1.05); }
+
+.hobby-emoji {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.8rem;
+  transition: transform 0.2s;
+}
+.hobby-card:hover .hobby-emoji { transform: scale(1.15) rotate(-5deg); }
+
+.hobby-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.8);
+}
+
+/* ─── OBJETIVOS ─── */
+#objetivos { background: var(--white); }
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.goal-card {
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  transition: all 0.3s;
+  position: relative;
+  background: var(--white);
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+}
+.goal-card.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+.goal-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 3px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.goal-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.08); transform: translateY(-4px); }
+.goal-card.in:hover { transform: translateY(-4px); }
+.goal-card:hover::before { transform: scaleX(1); }
+
+.goal-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 1.2rem;
+}
+.goal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: 1rem;
+  letter-spacing: -0.3px;
+}
+.goal-desc {
+  font-size: 0.9rem;
+  color: var(--mid);
+  line-height: 1.75;
+}
+
+/* ─── CONTATO ─── */
+#contato { background: var(--charcoal); }
+#contato .sec-title { color: var(--white); }
+#contato .sec-num { color: var(--red); }
+#contato .sec-line { background: rgba(255,255,255,0.1); }
+#contato .sec-header { border-color: rgba(255,255,255,0.1); }
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+}
+
+.contact-intro {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  font-style: italic;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.links-list { display:flex; flex-direction:column; gap:0.5rem; }
+
+.link-row {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.25s;
+  text-decoration: none;
+  opacity: 0;
+  transform: translateX(-16px);
+}
+.link-row.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.link-row:hover { border-color: rgba(200,16,46,0.4); background: rgba(200,16,46,0.05); }
+
+.link-emoji {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+.link-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  width: 100px;
+}
+.link-url {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.25s;
+}
+.link-row:hover .link-url { color: rgba(255,255,255,0.5); }
+
+.contact-aside {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.contact-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 2rem;
+  transition: border-color 0.3s, background 0.3s;
+  opacity: 0;
+  transform: translateX(16px);
+}
+.contact-card.in {
+  opacity: 1;
+  transform: translateX(0);
+}
+.contact-card:hover { border-color: rgba(200,16,46,0.3); background: rgba(200,16,46,0.05); }
+.contact-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 0.8rem;
+}
+.contact-card-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--dark);
+  padding: 2rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.1em;
+}
+.footer-red {
+  width: 32px; height: 3px;
+  background: var(--red);
+}
+
+/* ─── ANIMATIONS ─── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* stagger delays for children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.reveal-stagger.in > *:nth-child(1) { opacity:1; transform:none; transition-delay: 0.05s; }
+.reveal-stagger.in > *:nth-child(2) { opacity:1; transform:none; transition-delay: 0.15s; }
+.reveal-stagger.in > *:nth-child(3) { opacity:1; transform:none; transition-delay: 0.25s; }
+.reveal-stagger.in > *:nth-child(4) { opacity:1; transform:none; transition-delay: 0.35s; }
+.reveal-stagger.in > *:nth-child(5) { opacity:1; transform:none; transition-delay: 0.45s; }
+.reveal-stagger.in > *:nth-child(6) { opacity:1; transform:none; transition-delay: 0.55s; }
+
+/* cursor glow */
+.cursor-dot {
+  width: 6px; height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s;
+  mix-blend-mode: multiply;
+}
+.cursor-ring {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(200,16,46,0.4);
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  transition: all 0.15s ease;
+}
+
+@media(max-width:768px){
+  nav { padding: 0 1.5rem; }
+  #hero { grid-template-columns: 1fr; }
+  .hero-left, .hero-right { padding: 4rem 2rem; }
+  .section-wrap { padding: 4rem 1.5rem; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+  nav .nav-links { display: none; }
+  .about-grid { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .skills-columns { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#hero">Port<span>.</span>fólio</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#habilidades">Skills</a></li>
+    <li><a href="#trajetoria">Trajetória</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+    <li><a href="#objetivos">Objetivos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="ring2"></div>
+    <div class="hero-eyebrow">Portfólio Pessoal feito por Sofia Rafaela · 2026</div>
+    <h1 class="hero-name">
+      Perfil de:
+      <em>Sofia Rafaela.</em>
+    </h1>
+    <div class="hero-role">Desenvolvedor · Tecnologia · Inovação</div>
+    <div class="hero-cta">
+      <a class="btn-red" href="#trajetoria">Ver Trajetória</a>
+      <a class="btn-outline-white" href="#contato">Contato</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stat">
+      <div class="hero-stat-num">3<span>+</span></div>
+      <div class="hero-stat-label">Anos de Experiência</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-num">12<span>+</span></div>
+      <div class="hero-stat-label">Projetos Concluídos</div>
+    </div>
+    <div class="hero-quote">
+      <p>"Minha paixão se divide entre a lógica da programação e a emoção do vôlei — porque tanto no código quanto na quadra, cada movimento faz a diferença."</p>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-wrap">
+    <div class="sec-header reveal">
+      <div><div class="sec-num">01 / Sobre</div><h2 class="sec-title">Quem Sou Eu</h2></div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="about-grid reveal">
+      <div class="about-photo-wrap">
+
+
+
+        <div class="about-photo">
+
+           <img src="cat.jpg" alt="Foto de perfil" class="profile-img">
+
+          <!-- Substitua o SVG abaixo por: <img src="sua-foto.jpg" alt="Foto"> -->
+          <svg viewBox="0 0 64 64" fill="none"><circle cx="32" cy="24" r="12" stroke="#C8102E" stroke-width="1.5"/><path d="M8 56c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="#C8102E" stroke-width="1.5"/></svg>
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-text">17</div>
+          <div class="about-badge-label">Anos</div>
+        </div>
+      </div>
+      <div class="about-fields">
+        <div class="field-row">
+          <div class="field-group">
+            <span class="field-label">Nome Completo</span>
+            <span class="field-value">Sofia Rafaela Lellís Gonçalves</span>
+          </div>
+          <div class="field-group">
+            <span class="field-label">Localização</span>
+            <span class="field-value">São Paulo, Brasil</span>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <span class="field-label">Área de Atuação</span>
+            <span class="field-value">Tecnologia / Programação</span>
+          </div>
+          <div class="field-group">
+            <span class="field-label">Disponibilidade</span>
+            <span class="field-value">Aberto a oportunidades</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <span class="field-label">Sobre Mim</span>
+          <span class="field-value multiline">Sou uma pessoa apaixonada por programação, sempre em busca de evoluir, aprender novas tecnologias e construir um futuro promissor na área. Fora dos estudos e projetos, gosto de jogar vôlei por diversão, aproveitando o esporte como uma forma de lazer, energia e equilíbrio. A música também faz parte da minha essência, especialmente as canções da minha artista favorita, Melanie Martinez, que me inspiram e acompanham no dia a dia. Tenho uma personalidade intensa, sou admirador da beleza feminina, valorizo conexões e experiências, e me destaco pela minha capacidade de reconhecer erros, corrigir minhas atitudes e sempre buscar evolução pessoal. Além disso, sou comprometido com responsabilidades e prazos, mantendo dedicação total para cumprir objetivos a qualquer momento, com determinação, foco e disciplina.</span>
+        </div>
+        <div class="field-group">
+          <span class="field-label">Rotina / Interesses Atuais</span>
+          <span class="field-value multiline">Atualmente, estudo programação para desenvolver minhas habilidades, criar projetos e construir uma carreira sólida, enquanto ganho experiência em logística empresarial. Meu objetivo é crescer financeiramente, conquistar minha independência, investir nos estudos e ajudar minha família, construindo um futuro melhor com dedicação e evolução constante.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-wrap">
+    <div class="sec-header reveal">
+      <div><div class="sec-num" style="color:var(--red);">02 / Skills</div><h2 class="sec-title" style="color:white;">Habilidades</h2></div>
+      <div class="sec-line" style="background:rgba(255,255,255,0.08);"></div>
+    </div>
+    <div class="skills-columns reveal" id="skills-container">
+      <!-- Skills renderizadas via JS abaixo -->
+    </div>
+  </div>
+</section>
+
+<!-- TRAJETÓRIA -->
+<section id="trajetoria">
+  <div class="section-wrap">
+    <div class="sec-header reveal">
+      <div><div class="sec-num">03 / Trajetória</div><h2 class="sec-title">Minha Jornada</h2></div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="timeline-wrap">
+      <div class="timeline-spine"></div>
+      <div class="timeline-items" id="timeline-container"></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="section-wrap">
+    <div class="sec-header reveal">
+      <div><div class="sec-num" style="color:rgba(255,255,255,0.5);">04 / Hobbies</div><h2 class="sec-title" style="color:white;">Interesses Pessoais</h2></div>
+      <div class="sec-line" style="background:rgba(255,255,255,0.2);"></div>
+    </div>
+    <div class="hobbies-grid" id="hobbies-container"></div>
+  </div>
+</section>
+
+<!-- OBJETIVOS -->
+<section id="objetivos">
+  <div class="section-wrap">
+    <div class="sec-header reveal">
+      <div><div class="sec-num">05 / Futuro</div><h2 class="sec-title">Objetivos & Sonhos</h2></div>
+      <div class="sec-line"></div>
+    </div>
+    <div class="goals-grid" id="goals-container"></div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-wrap">
+    <div class="sec-header reveal">
+      <div><div class="sec-num" style="color:var(--red);">06 / Contato</div><h2 class="sec-title" style="color:white;">Vamos Conversar</h2></div>
+      <div class="sec-line" style="background:rgba(255,255,255,0.08);"></div>
+    </div>
+    <div class="contact-layout reveal">
+      <div>
+        <p class="contact-intro">"Estou aberto a novas oportunidades, colaborações e projetos interessantes. Entre em contato!"</p>
+        <div class="links-list" id="links-container"></div>
+      </div>
+      <div class="contact-aside" id="contact-aside">
+        <div class="contact-card">
+          <div class="contact-card-label">Área Principal</div>
+          <div class="contact-card-value">Tecnologia</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Localização</div>
+          <div class="contact-card-value">Brasil</div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-label">Status Atual</div>
+          <div class="contact-card-value" style="color:var(--red);">Disponível</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© <span id="fyear"></span> — Portfólio Pessoal. Desenvolvido por Sofia Rafaela do 3TEC. Linguagem: JavaScript, Html e CSS</span>
+  <div class="footer-red"></div>
+</footer>
+
+<script>
+document.getElementById('fyear').textContent = new Date().getFullYear();
+
+/* ── DADOS — edite aqui ───────────────────────────── */
+const SKILLS = [
+  {name:'HTML / CSS',   lvl:80},
+  {name:'JavaScript',   lvl:65},
+  {name:'Python',       lvl:55},
+  {name:'Git / GitHub', lvl:70},
+  {name:'React',        lvl:40},
+  {name:'SQL',          lvl:50},
+];
+
+const TIMELINE = [
+  {date:'2024', title:'Início na Programação',  sub:'Primeiro contato com código',      desc:'Pequenas aulas com vídeos do Gustavo Guanabara e o meu professor querido Eduardo Lazaro, despertando minha paixão pela tecnologia e programação.'},
+  {date:'2025', title:'Primeiro Curso Técnico', sub:'Instituição / Plataforma',          desc:'Fiz provas e evolui na área, chegando a ganhar a premiação do evento do CODE EXPERIENCE de 2025 (um evento que aconteceu na UNIMAR) e assim também criando projetos e melhorando a experiência.'},
+  {date:'2026', title:'Projeto Pessoal',        sub:'Desenvolvimento independente',      desc:'A criação de um site aonde envovia um projeto que precisava ter front-end, back-end e banco de dados (MySQL). Que isso me fez aprender varias linguas de programação, como PYTHON, CSS, JS, HTML, SQL e etc...'},
+];
+
+const HOBBIES = [
+  {e:'🎮', n:'Games'}, {e:'🎵', n:'Música'}, {e:'📚', n:'Leitura'},
+  {e:'💻', n:'Código'},{e:'🎬', n:'Filmes'}, {e:'🌐', n:'Internet'}, {e:'🏐', n:'Vôlei'},
+];
+
+const GOALS = [
+  {i:'🚀', t:'Carreira em Tech',    d:'Meu objetivo profissional é atuar na área de TI como programadora, especialmente no setor bancário, buscando crescimento, estabilidade e desenvolvimento contínuo na tecnologia.'},
+  {i:'🎓', t:'Educação Contínua',   d:'Planejo conquistar cursos, graduações e certificações na área de TI, com foco em programação, desenvolvimento de sistemas, banco de dados, segurança da informação e novas tecnologias, buscando ampliar meus conhecimentos e crescer profissionalmente no setor.'},
+  {i:'🌍', t:'Impacto Real',        d:'Quero deixar um legado de inovação, crescimento e contribuição para a sociedade por meio da tecnologia, criando soluções que facilitem a vida das pessoas e gerem impacto positivo no mundo. A tecnologia será uma ferramenta essencial para transformar ideias em projetos, promover avanços e abrir oportunidades para um futuro melhor.'},
+];
+
+const LINKS = [
+  {e:'💼', l:'LinkedIn',  u:'https://www.linkedin.com/in/sofia-rafaela-600129365/'},
+  {e:'🐙', l:'GitHub',    u:'https://github.com/SofridaBr'},
+  {e:'📧', l:'E-mail',    u:'NÃO PERMITIDO O ACESSO AO EMAIL SEM A AUTORIZAÇÃO'},
+  {e:'📱', l:'meu Instagram: sof1a_x9 ', u:'https://www.instagram.com/sof1a_x9/'},
+];
+/* ─────────────────────────────────────────────────── */
+
+/* render skills */
+(function(){
+  const c = document.getElementById('skills-container');
+  SKILLS.forEach(s => {
+    const d = document.createElement('div');
+    d.className = 'skill-row';
+    d.innerHTML = `
+      <div class="skill-row-left">
+        <span class="skill-name">${s.name}</span>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" data-lvl="${s.lvl}"></div></div>
+      </div>
+      <div class="skill-pct">${s.lvl}<span style="font-size:1rem;color:var(--red);">%</span></div>`;
+    c.appendChild(d);
+  });
+})();
+
+/* render timeline */
+(function(){
+  const c = document.getElementById('timeline-container');
+  TIMELINE.forEach(t => {
+    const d = document.createElement('div');
+    d.className = 'tl-item';
+    d.innerHTML = `
+      <span class="tl-date">${t.date}</span>
+      <div class="tl-body">
+        <span class="tl-title">${t.title}</span>
+        <span class="tl-sub">${t.sub}</span>
+        <p class="tl-desc">${t.desc}</p>
+      </div>`;
+    c.appendChild(d);
+  });
+})();
+
+/* render hobbies */
+(function(){
+  const c = document.getElementById('hobbies-container');
+  HOBBIES.forEach(h => {
+    const d = document.createElement('div');
+    d.className = 'hobby-card';
+    d.innerHTML = `<span class="hobby-emoji">${h.e}</span><span class="hobby-label">${h.n}</span>`;
+    c.appendChild(d);
+  });
+})();
+
+/* render goals */
+(function(){
+  const c = document.getElementById('goals-container');
+  GOALS.forEach(g => {
+    const d = document.createElement('div');
+    d.className = 'goal-card';
+    d.innerHTML = `<span class="goal-icon">${g.i}</span><div class="goal-title">${g.t}</div><p class="goal-desc">${g.d}</p>`;
+    c.appendChild(d);
+  });
+})();
+
+/* render links */
+(function(){
+  const c = document.getElementById('links-container');
+  LINKS.forEach(l => {
+    const a = document.createElement('a');
+    a.className = 'link-row';
+    a.href = l.u;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.innerHTML = `<span class="link-emoji">${l.e}</span><span class="link-label">${l.l}</span><span class="link-url">${l.u}</span>`;
+    c.appendChild(a);
+  });
+})();
+
+/* ── INTERSECTION OBSERVER — reveal on scroll ── */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('in');
+      obs.unobserve(e.target);
+    }
+  });
+}, {threshold: 0.1});
+
+document.querySelectorAll('.reveal, .reveal-stagger').forEach(el => obs.observe(el));
+
+/* staggered tl-items */
+const tlObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const items = document.querySelectorAll('.tl-item');
+      items.forEach((it, i) => {
+        setTimeout(() => it.classList.add('in'), i * 150);
+      });
+      tlObs.disconnect();
+    }
+  });
+}, {threshold: 0.1});
+const tlSection = document.getElementById('trajetoria');
+if (tlSection) tlObs.observe(tlSection);
+
+/* staggered hobby cards */
+const hobbyObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.hobby-card').forEach((c, i) => {
+        setTimeout(() => c.classList.add('in'), i * 80);
+      });
+      hobbyObs.disconnect();
+    }
+  });
+}, {threshold: 0.1});
+const hobbySection = document.getElementById('hobbies');
+if (hobbySection) hobbyObs.observe(hobbySection);
+
+/* staggered goal cards */
+const goalObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.goal-card').forEach((c, i) => {
+        setTimeout(() => c.classList.add('in'), i * 120);
+      });
+      goalObs.disconnect();
+    }
+  });
+}, {threshold: 0.1});
+const goalSection = document.getElementById('objetivos');
+if (goalSection) goalObs.observe(goalSection);
+
+/* staggered link rows */
+const linkObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.link-row').forEach((r, i) => {
+        setTimeout(() => r.classList.add('in'), i * 100);
+      });
+      linkObs.disconnect();
+    }
+  });
+}, {threshold: 0.1});
+const contactSection = document.getElementById('contato');
+if (contactSection) linkObs.observe(contactSection);
+
+/* staggered contact cards */
+const ccObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.contact-card').forEach((c, i) => {
+        setTimeout(() => c.classList.add('in'), i * 120);
+      });
+      ccObs.disconnect();
+    }
+  });
+}, {threshold: 0.1});
+if (contactSection) ccObs.observe(contactSection);
+
+/* skill bars on scroll */
+const skillObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.querySelectorAll('.skill-bar-fill').forEach(b => {
+        b.style.width = b.dataset.lvl + '%';
+      });
+      skillObs.disconnect();
+    }
+  });
+}, {threshold: 0.2});
+const skillSec = document.getElementById('habilidades');
+if (skillSec) skillObs.observe(skillSec);
+
+/* custom cursor */
+const dot  = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+(function animCursor(){
+  rx += (mx - rx) * 0.12;
+  ry += (my - ry) * 0.12;
+  dot.style.left  = mx + 'px';
+  dot.style.top   = my + 'px';
+  ring.style.left = (rx - 16) + 'px';
+  ring.style.top  = (ry - 16) + 'px';
+  requestAnimationFrame(animCursor);
+})();
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => ring.style.transform = 'scale(1.8)');
+  el.addEventListener('mouseleave', () => ring.style.transform = 'scale(1)');
+});
+</script>
+</body>
+</html>
+
+
+

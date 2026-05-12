@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meu Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<canvas id="particles"></canvas>
+<div class="cursor" id="cursor"></div>
+<div class="cursor-trail" id="cursor-trail"></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="#hero">◈ PORTFOLIO</a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#habilidades">Skills</a></li>
+    <li><a href="#trajetoria">Trajetoria</a></li>
+    <li><a href="#hobbies">Hobbies</a></li>
+    <li><a href="#objetivos">Objetivos</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">// INICIALIZANDO SISTEMA... BEM-VINDO(A)</div>
+  <h1 class="hero-name glitch">
+    <input class="editable-field hero-name-input" id="hero-name" value="SEU NOME AQUI" />
+  </h1>
+  <div class="hero-subtitle">
+    <input class="editable-field hero-subtitle-input" id="hero-subtitle" value="Desenvolvedor · Estudante · Criador" />
+  </div>
+  <p class="hero-desc">
+    <textarea class="editable-field hero-desc-input" id="hero-desc" rows="3">Escreva aqui uma breve descricao sobre voce. Quem e voce? O que te move? O que te faz especial? Este e o seu espaco para causar uma primeira impressao incrivel.</textarea>
+  </p>
+  <div class="hero-btns">
+    <a class="btn-primary" href="#trajetoria">Ver Trajetoria</a>
+    <a class="btn-secondary" href="#contato">Entrar em Contato</a>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="section-header animate-in">
+    <span class="section-num">01</span>
+    <h2 class="section-title">SOBRE MIM</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid animate-in">
+    <div>
+      <div class="about-avatar card" id="avatar-box" onclick="document.getElementById('photo-upload').click()" title="Clique para adicionar sua foto">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="32" cy="24" r="12" stroke="#00d4ff" stroke-width="2"/>
+          <path d="M8 56c0-13.3 10.7-24 24-24s24 10.7 24 24" stroke="#00d4ff" stroke-width="2"/>
+        </svg>
+        <span>CLIQUE PARA ADICIONAR FOTO</span>
+        <input type="file" id="photo-upload" accept="image/*" onchange="loadPhoto(event)">
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="field-group">
+        <label class="field-label">// Nome</label>
+        <input class="editable-field" id="about-name" value="Seu Nome Completo" />
+      </div>
+      <div class="field-group">
+        <label class="field-label">// Localizacao</label>
+        <input class="editable-field" id="about-local" value="Cidade, Estado — Brasil" />
+      </div>
+      <div class="field-group">
+        <label class="field-label">// Area de Atuacao</label>
+        <input class="editable-field" id="about-area" value="Tecnologia / Programacao" />
+      </div>
+      <div class="field-group">
+        <label class="field-label">// Sobre mim</label>
+        <textarea class="editable-field" id="about-bio" rows="5">Conte sua historia aqui. De onde voce vem, o que te trouxe ate a area de tecnologia, quais experiencias moldaram quem voce e. Seja autentico(a) — este e o seu espaco para se apresentar ao mundo da forma como voce quiser.</textarea>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="habilidades">
+  <div class="section-header animate-in">
+    <span class="section-num">02</span>
+    <h2 class="section-title">HABILIDADES</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid animate-in" id="skills-container"></div>
+  <button class="add-btn" onclick="addSkill()">+ ADICIONAR SKILL</button>
+</section>
+
+<!-- TRAJETORIA -->
+<section id="trajetoria">
+  <div class="section-header animate-in">
+    <span class="section-num">03</span>
+    <h2 class="section-title">TRAJETORIA</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="timeline animate-in" id="timeline-container"></div>
+  <button class="add-btn" onclick="addTimelineItem()">+ ADICIONAR ITEM</button>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies">
+  <div class="section-header animate-in">
+    <span class="section-num">04</span>
+    <h2 class="section-title">INTERESSES & HOBBIES</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="hobbies-grid animate-in" id="hobbies-container"></div>
+  <button class="add-btn" onclick="addHobby()">+ ADICIONAR HOBBY</button>
+</section>
+
+<!-- OBJETIVOS -->
+<section id="objetivos">
+  <div class="section-header animate-in">
+    <span class="section-num">05</span>
+    <h2 class="section-title">OBJETIVOS & SONHOS</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="goals-grid animate-in" id="goals-container"></div>
+  <button class="add-btn" onclick="addGoal()">+ ADICIONAR OBJETIVO</button>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="section-header animate-in">
+    <span class="section-num">06</span>
+    <h2 class="section-title">CONTATO & LINKS</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="links-grid animate-in" id="links-container"></div>
+  <button class="add-btn" onclick="addLink()">+ ADICIONAR LINK</button>
+  <div class="drag-hint">✦ Clique nos campos para editar · Clique em "Salvar" para guardar seus dados</div>
+</section>
+
+<footer>
+  <p>◈ PORTFOLIO PESSOAL · DESENVOLVIDO COM &hearts; · <span id="footer-year"></span></p>
+</footer>
+
+<!-- SAVE BAR -->
+<div class="save-bar">
+  <div class="save-status" id="save-status">✓ DADOS SALVOS</div>
+  <button class="save-btn" onclick="saveData()">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17,21 17,13 7,13 7,21"/><polyline points="7,3 7,8 15,8"/></svg>
+    SALVAR
+  </button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
