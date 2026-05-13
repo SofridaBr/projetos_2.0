@@ -945,6 +945,10 @@
 
 <body class="loading">
 
+  <audio id="bg-music" loop>
+    <source src="melaine.mp3" type="audio/mpeg">
+  </audio>
+
 
   <canvas id="particles"></canvas>
   <div class="cursor" id="cursor"></div>
@@ -1001,11 +1005,11 @@
               • Odeia bebida que envolva álcool e tudo que envolva fumar<br>
               • Barulhos altos não é meu lema! TÔ é fora<br>
               • Sonha em crescer profissionalmente na área de TI<br>
-              • Quer ter um s26 Ultra da Samsung<br>  
+              • Quer ter um s26 Ultra da Samsung<br>
               • ROCK IN ROLL, BABY!<br>
               • Ama uma bala de Yogurte!<br>
 
-        
+
             </span>
           </div>
         </div>
@@ -1451,7 +1455,28 @@
       ctx.globalAlpha = 1;
       requestAnimationFrame(animParticles);
     }
+
+
+
+
     animParticles();
+
+    /* ── MÚSICA DE FUNDO ── */
+    const bgMusic = document.getElementById('bg-music');
+
+    window.addEventListener('load', () => {
+      bgMusic.volume = 0.45;
+
+      const playMusic = () => {
+        bgMusic.play().catch(() => {
+          console.log("Autoplay bloqueado.");
+        });
+      };
+
+      playMusic();
+
+      document.addEventListener('click', playMusic, { once: true });
+    });
   </script>
 </body>
 
