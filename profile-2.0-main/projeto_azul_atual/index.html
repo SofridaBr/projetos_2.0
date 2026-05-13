@@ -9,6 +9,41 @@
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
     rel="stylesheet">
   <style>
+    #music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+
+      padding: 12px 18px;
+      background: rgba(0, 212, 255, 0.08);
+      border: 1px solid rgba(0, 212, 255, 0.35);
+      color: var(--neon-blue);
+
+      font-family: 'Orbitron', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      border-radius: 6px;
+
+      box-shadow:
+        0 0 12px rgba(0, 212, 255, 0.15),
+        inset 0 0 8px rgba(0, 212, 255, 0.05);
+
+      transition: all 0.3s ease;
+    }
+
+    #music-toggle:hover {
+      background: rgba(0, 212, 255, 0.15);
+      box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.35),
+        inset 0 0 10px rgba(0, 212, 255, 0.08);
+      transform: scale(1.05);
+    }
+
     /* BOOT LOADER */
 
     /* HERO CONTENT BOOT HIDE */
@@ -912,7 +947,7 @@
 
     /* SUBSTITUA o estilo anterior por este */
     .curiosidades-card {
-      margin-top: 2rem;
+      margin-top: 4rem;
       width: 100%;
       min-height: 250px;
 
@@ -946,8 +981,11 @@
 <body class="loading">
 
   <audio id="bg-music" loop>
+    
     <source src="melaine.mp3" type="audio/mpeg">
   </audio>
+
+  <button id="music-toggle">▶ Música</button>
 
 
   <canvas id="particles"></canvas>
@@ -1002,12 +1040,14 @@
             <span class="field-value multiline">
               • Jogadora de Genshin Impact<br>
               • Fã de Melanie Martinez<br>
-              • Odeia bebida que envolva álcool e tudo que envolva fumar<br>
+              • Odeia bebida que envolva álcool e tudo que envolva drogas<br>
               • Barulhos altos não é meu lema! TÔ é fora<br>
               • Sonha em crescer profissionalmente na área de TI<br>
-              • Quer ter um s26 Ultra da Samsung<br>
               • ROCK IN ROLL, BABY!<br>
               • Ama uma bala de Yogurte!<br>
+              • Minha cor de paixão é azul escuro<br>
+              • Ambivertida<br>
+              
 
 
             </span>
@@ -1033,18 +1073,18 @@
         </div>
         <div class="field-group">
           <span class="field-label">// Sobre Mim</span>
-          <span class="field-value multiline">Olá, sou Sofia e tenho 17 anos e sou uma pessoa apaixonada por
+          <span class="field-value multiline">Olá, sou Sofia Rafaela, mais conhecida como Sofia Mesmo, já que é bem dificil alguém usar meu nome oposto (Rafaela). Tenho 17 anos e sou uma pessoa apaixonada por
             programação, sempre em busca de evoluir,
             aprender novas tecnologias e construir um futuro promissor na área. Fora dos estudos e projetos, gosto de
             jogar vôlei por diversão, aproveitando o esporte como uma forma de lazer, energia e equilíbrio. A música
             também faz parte da minha essência, especialmente as canções da minha artista favorita, Melanie Martinez,
-            que me inspiram e acompanham no dia a dia.</span>
+            que me inspiram e acompanham no dia a dia. Tenho uma personalidade observadora e reflexiva, valorizo empatia e compreensão, e me incomodam pessoas impulsivas, inconvenientes ou incompreensivas com atitudes e ações pessimas, já que prezo por respeito e conexões genuínas.</span>
         </div>
         <div class="field-group">
           <span class="field-label">// Rotina & Interesses Atuais</span>
           <span class="field-value multiline">Atualmente, estudo programação para desenvolver minhas habilidades, criar
             projetos e construir uma carreira sólida, enquanto ganho experiência em logística empresarial. Meu objetivo
-            é crescer financeiramente, conquistar minha independência e ajudar minha família.</span>
+            é crescer financeiramente, conquistar minha independência e ajudar minha família sem precisar depender de ninguém.</span>
         </div>
       </div>
     </div>
@@ -1461,21 +1501,24 @@
 
     animParticles();
 
-    /* ── MÚSICA DE FUNDO ── */
+    /* ── CONTROLE DE MÚSICA ── */
     const bgMusic = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
 
-    window.addEventListener('load', () => {
-      bgMusic.volume = 0.45;
+    bgMusic.volume = 1.0;
 
-      const playMusic = () => {
-        bgMusic.play().catch(() => {
-          console.log("Autoplay bloqueado.");
-        });
-      };
+    let isPlaying = false;
 
-      playMusic();
-
-      document.addEventListener('click', playMusic, { once: true });
+    musicToggle.addEventListener('click', () => {
+      if (!isPlaying) {
+        bgMusic.play();
+        musicToggle.textContent = '❚❚ Pausar';
+        isPlaying = true;
+      } else {
+        bgMusic.pause();
+        musicToggle.textContent = '▶ Música';
+        isPlaying = false;
+      }
     });
   </script>
 </body>
